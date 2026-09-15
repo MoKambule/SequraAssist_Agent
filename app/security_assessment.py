@@ -61,7 +61,7 @@ def security_assessment():
     
         st.header("2. Core Business Processes")
     
-        core_process = st.multiselect(
+        core_processes = st.multiselect(
             "Which important processes does the application support?",
             [
                 "User registration",
@@ -78,7 +78,7 @@ def security_assessment():
             width=500,
         )
     
-        if "Other" in core_process:
+        if "Other" in core_processes:
             core_process_other = st.text_input(
                 "Please describe the other important process.",width=500
             )
@@ -243,22 +243,26 @@ def security_assessment():
     
         st.divider()
     
+
         if st.button("Assess Risk", type="primary"):
-    
-            st.success("Business context submitted successfully!")
-    
-            st.write("### Assessment Information")
-    
-            st.write("**Application Purpose:**", application_purpose)
-            st.write("**Primary Users:**", primary_users)
-            st.write("**Core Processes:**", core_process)
-            st.write("**Business Impact:**", business_impact)
-            st.write("**Data Types:**", data_types)
-            st.write("**Data Storage:**", data_storage)
-            st.write("**Data Access:**", data_access)
-            st.write("**Application Exposure:**", application_exposure)
-            st.write("**Authentication:**", authentication_method)
-            st.write("**User Roles:**", user_roles)
-            st.write("**Potential Consequence:**", risk_consequence)
-    
-    
+
+            st.session_state["assessment_completed"] = True
+
+            st.session_state["assessment_data"] = {
+                "application_purpose": application_purpose,
+                "primary_users": primary_users,
+                "core_processes": core_processes,
+                "business_impact": business_impact,
+                "data_types": data_types,
+                "application_exposure": application_exposure,
+                "authentication_method": authentication_method,
+                "risk_consequence": risk_consequence
+            }
+
+            st.success(
+                "Your business context has been saved successfully."
+            )
+
+            st.info(
+                "Go to the Results page to view your assessment summary."
+    )

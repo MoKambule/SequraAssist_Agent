@@ -3,6 +3,8 @@ import streamlit as st
 from sidebar import sidebar
 from security_assessment import security_assessment
 from about import about
+from header import show_header
+from results import show_results
 
 st.set_page_config(
     page_title="Sequra Assist",
@@ -10,12 +12,12 @@ st.set_page_config(
     layout="wide"
 )
 
-
+show_header()
 page = sidebar() 
+
 
 if page == "Home":
 
-    st.title("🦋 Sequra Assist")
 
     st.subheader(
         "AI-Powered Security & Quality Risk Management"
@@ -43,11 +45,6 @@ elif page == "Security Assessment":
     security_assessment()
 
 elif page == "Results":
-
-    st.title("Security Results")
-
-    st.write(
-        "Your security assessment results will appear here."
-    )
+    show_results()
 
 
