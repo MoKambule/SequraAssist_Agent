@@ -1,5 +1,7 @@
 import streamlit as st 
 from risk.assessment import assess_risk
+from recommendations.engine import get_recommendations
+
 
 def security_assessment():
         st.title("Security Assessment")
@@ -267,6 +269,11 @@ def security_assessment():
             )
 
             st.session_state["risk_result"] = risk_result
+            recommendations = get_recommendations(
+                st.session_state["assessment_data"]
+            )
+
+            st.session_state["recommendations"] = recommendations #connecting recommendatioon with assessment flow
             st.success(
                 "Your business context has been saved successfully."
             )

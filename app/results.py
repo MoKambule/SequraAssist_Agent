@@ -10,11 +10,6 @@ def show_results():
         st.warning(
             "Please complete the Security Assessment first."
         )
-
-        st.info(
-            "Use the sidebar to open the Security Assessment page."
-        )
-
         return
 
     st.success(
@@ -28,6 +23,7 @@ def show_results():
 
     assessment_data = st.session_state["assessment_data"]
     risk_result = st.session_state["risk_result"]
+    recommendations = st.session_state["recommendations"]
 
     st.divider()
 
@@ -51,11 +47,9 @@ def show_results():
     st.divider()
 
     st.subheader("Recommended Security Tests")
+    for recommendation in recommendations:
+        st.write(f"✓ {recommendation}")
 
-    st.success("✓ Authentication Testing")
-    st.warning("✓ Authorization Testing")
-    st.warning("✓ Input Validation Testing")
-    st.info("✓ API Security Testing")
 
     st.divider()
 
