@@ -1,4 +1,5 @@
 import streamlit as st 
+from risk.assessment import assess_risk
 
 def security_assessment():
         st.title("Security Assessment")
@@ -256,9 +257,16 @@ def security_assessment():
                 "data_types": data_types,
                 "application_exposure": application_exposure,
                 "authentication_method": authentication_method,
-                "risk_consequence": risk_consequence
+                "risk_consequence": risk_consequence,
+                "data_access": data_access,
+                "data_storage": data_storage,
+                "user_roles": user_roles,
             }
+            risk_result = assess_risk(
+            st.session_state["assessment_data"]
+            )
 
+            st.session_state["risk_result"] = risk_result
             st.success(
                 "Your business context has been saved successfully."
             )

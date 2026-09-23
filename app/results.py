@@ -27,6 +27,7 @@ def show_results():
     )
 
     assessment_data = st.session_state["assessment_data"]
+    risk_result = st.session_state["risk_result"]
 
     st.divider()
 
@@ -37,64 +38,15 @@ def show_results():
     with col1:
         st.metric(
             label="Risk Level",
-            value="HIGH"
+            value=risk_result["level"]
         )
-
     with col2:
-        st.metric(
+       st.metric(
             label="Risk Score",
-            value="78 / 100"
+            value=f'{risk_result["score"]} / 100'
         )
 
-    with col3:
-        st.metric(
-            label="Priority Areas",
-            value="4"
-        )
-
-    st.divider()
-
-    st.subheader("Submitted Assessment Information")
-
-    st.write(
-        "**Application Purpose:**",
-        assessment_data["application_purpose"]
-    )
-
-    st.write(
-        "**Primary Users:**",
-        assessment_data["primary_users"]
-    )
-
-    st.write(
-        "**Core Processes:**",
-        assessment_data["core_processes"]
-    )
-
-    st.write(
-        "**Business Impact:**",
-        assessment_data["business_impact"]
-    )
-
-    st.write(
-        "**Data Types:**",
-        assessment_data["data_types"]
-    )
-
-    st.write(
-        "**Application Exposure:**",
-        assessment_data["application_exposure"]
-    )
-
-    st.write(
-        "**Authentication Method:**",
-        assessment_data["authentication_method"]
-    )
-
-    st.write(
-        "**Potential Consequence:**",
-        assessment_data["risk_consequence"]
-    )
+   
 
     st.divider()
 
@@ -123,7 +75,4 @@ def show_results():
 
     st.divider()
 
-    st.caption(
-        "The risk score and recommendations are currently "
-        "placeholder data for the prototype."
-    )
+   
