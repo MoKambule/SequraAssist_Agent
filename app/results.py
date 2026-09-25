@@ -48,7 +48,15 @@ def show_results():
 
     st.subheader("Recommended Security Tests")
     for recommendation in recommendations:
-        st.write(f"✓ {recommendation}")
+        st.write(f"**{recommendation['test']}**")
+
+        st.write(
+            f"Why: {recommendation['reason']}"
+        )
+
+        st.write(
+            f"Priority: {recommendation['priority']}"
+        )
 
 
     st.divider()
