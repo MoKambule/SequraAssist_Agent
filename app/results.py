@@ -24,6 +24,9 @@ def show_results():
     assessment_data = st.session_state["assessment_data"]
     risk_result = st.session_state["risk_result"]
     recommendations = st.session_state["recommendations"]
+    st.info(
+    f"{len(recommendations)} security tests identified."
+)
 
     st.divider()
 
